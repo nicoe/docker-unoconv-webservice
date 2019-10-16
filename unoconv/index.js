@@ -18,11 +18,9 @@ module.exports = {
    * @api public
    */
   async convert (file, outputFormat, options, callback) {
-    let args
     let bin = 'unoconv'
-    let child
-    let stdout = []
-    let stderr = []
+    const stdout = []
+    const stderr = []
 
     const port = await getPort()
     const userProfilePath = path.join(os.tmpdir(), port.toString())
@@ -40,7 +38,7 @@ module.exports = {
       }
     )
 
-    args = [
+    const args = [
       '--format=' + outputFormat,
       '--stdout',
       '--port=' + options.port,
@@ -57,7 +55,7 @@ module.exports = {
       bin = options.bin
     }
 
-    child = childProcess.spawn(bin, args)
+    const child = childProcess.spawn(bin, args)
 
     child.stdout.on('data', function (data) {
       stdout.push(data)
@@ -84,10 +82,8 @@ module.exports = {
    * @api public
    */
   listen (options) {
-    let args
+    const args = ['--listener']
     let bin = 'unoconv'
-
-    args = ['--listener']
 
     if (options && options.port) {
       args.push('-p' + options.port)
@@ -108,7 +104,7 @@ module.exports = {
    */
   detectSupportedFormats (options, callback) {
     let docType
-    let detectedFormats = {
+    const detectedFormats = {
       document: [],
       graphics: [],
       presentation: [],

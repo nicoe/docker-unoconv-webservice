@@ -74,7 +74,7 @@ module.exports.showFormat = (request, reply) => {
 }
 
 module.exports.showVersions = (request, reply) => {
-  let versions = {}
+  const versions = {}
   Object.keys(pkg.dependencies).forEach((item) => {
     versions[item] = pkg.dependencies[item]
   })
