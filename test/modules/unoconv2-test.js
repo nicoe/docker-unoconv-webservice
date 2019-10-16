@@ -1,6 +1,6 @@
 'use strict'
 
 const tap = require('tap')
-const unoconv2 = require('unoconv2')
+const unoconv = require('../../unoconv')
 
-tap.ok(unoconv2, 'unoconv2 loads OK')
+tap.ok(unoconv, 'unoconv loads OK')

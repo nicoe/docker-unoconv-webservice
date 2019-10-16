@@ -30,9 +30,11 @@
     "url": "git+https://github.com/zrrrzzt/tfk-api-unoconv.git"
   },
   "dependencies": {
+    "get-port": "^5.0.0",
     "hapi": "16.7.0",
     "inert": "4.2.1",
-    "unoconv2": "1.0.0",
+    "lodash.isfunction": "^3.0.9",
+    "mime": "^2.4.4",
     "uuid": "3.3.3"
   },
   "devDependencies": {
