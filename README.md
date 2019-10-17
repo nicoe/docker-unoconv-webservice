@@ -1,9 +1,14 @@
-[![Build Status](https://travis-ci.org/zrrrzzt/tfk-api-unoconv.svg?branch=master)](https://travis-ci.org/zrrrzzt/tfk-api-unoconv)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
-
 # tfk-api-unoconv
 
-Unoconv as a webservice
+Unoconv as a webservice.
+
+This fork calls unoconv in way that allows parallel conversions, that is with random `--port` and `--user-profile` options. See https://github.com/unoconv/unoconv/issues/225.
+
+Credits:
+
+* https://github.com/zrrrzzt/tfk-api-unoconv, of course.
+* Docker build: https://github.com/thecodingmachine/gotenberg. Awesome, but at the time of writing it didn't provide image to pdf conversion, which I needed.
+* Unoconv wrapper: https://github.com/HAASLEWER/unoconv2. This was used as is in the original implementation, but it didn't allow the user profile option. Didn't have the patience to submit a pull request. Sorry.
 
 ## Docker
 
