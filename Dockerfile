@@ -18,8 +18,10 @@ WORKDIR /unoconvservice
 RUN set -eux \
     && npm install --production
 RUN set -eux \
+    && adduser --uid 1003 coog --disabled-login \
     && apt -y install procps \
-    && chown node:node /unoconvservice -R
+    && chown coog:coog /unoconvservice -R \
+    && chmod -R 771 /unoconvservice -R
 
 # Env variables
 ENV SERVER_PORT 5000
@@ -27,7 +29,7 @@ ENV PAYLOAD_MAX_SIZE 1048576
 ENV TIMEOUT_SERVER 120000
 ENV TIMEOUT_SOCKET 140000
 
-USER node
+USER coog
 
 # Expose 3000
 EXPOSE 5000
