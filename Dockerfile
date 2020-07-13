@@ -19,6 +19,8 @@ RUN set -eux \
     && npm install --production
 RUN set -eux \
     && adduser --uid 1003 coog --disabled-login \
+    && adduser coog node \
+    && adduser node coog \
     && apt -y install procps \
     && chown coog:coog /unoconvservice -R \
     && chmod -R 771 /unoconvservice -R
