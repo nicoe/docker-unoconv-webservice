@@ -28,6 +28,7 @@ RUN set -eux \
 # Env variables
 ENV SERVER_PORT 5000
 ENV PAYLOAD_MAX_SIZE 1048576
+ENV PAYLOAD_TIMEOUT 120000
 ENV TIMEOUT_SERVER 120000
 ENV TIMEOUT_SOCKET 140000
 
@@ -37,4 +38,4 @@ USER coog
 EXPOSE 5000
 
 # Startup
-ENTRYPOINT /usr/bin/unoconv --listener --server=0.0.0.0 --port=2002 & node standalone.js
+CMD ["node", "standalone.js"]

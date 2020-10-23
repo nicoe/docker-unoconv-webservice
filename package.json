@@ -1,0 +1,44 @@
+{
+  "name": "tfk-api-unoconv",
+  "version": "3.3.0",
+  "private": true,
+  "description": "Unoconv as a webservice",
+  "author": {
+    "name": "Anssi Törmä",
+    "url": "https://github.com/atorma"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/atorma/tfk-api-unoconv/issues"
+  },
+  "homepage": "https://github.com/atorma/tfk-api-unoconv",
+  "main": "index.js",
+  "engines": {
+    "node": ">=10.14.0"
+  },
+  "scripts": {
+    "test": "standard && npm audit && tap --reporter=spec test/**/*.js",
+    "coverage": "tap test/*.js --coverage",
+    "coveralls": "tap --cov --coverage-report=lcov test/**/*.js && cat coverage/lcov.info | coveralls",
+    "start": "node standalone.js",
+    "standard-fix": "standard --fix",
+    "refresh": "rm -rf node_modules && rm package-lock.json && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atorma/tfk-api-unoconv.git"
+  },
+  "dependencies": {
+    "get-port": "^5.0.0",
+    "hapi": "16.7.0",
+    "inert": "4.2.1",
+    "lodash.isfunction": "^3.0.9",
+    "mime": "^2.4.4",
+    "uuid": "3.3.3"
+  },
+  "devDependencies": {
+    "coveralls": "3.0.7",
+    "standard": "14.3.1",
+    "tap": "14.7.0"
+  }
+}
