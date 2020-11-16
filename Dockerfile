@@ -28,12 +28,6 @@ WORKDIR /unoconvservice
 COPY package.json .
 RUN set -eux \
     && npm install --production
-RUN set -eux \
-    && adduser --uid 1003 coog --disabled-login \
-    && adduser coog node \
-    && adduser node coog \
-    && chown coog:coog /unoconvservice -R \
-    && chmod -R 771 /unoconvservice -R
 
 # Install unoconv
 # Credits:
@@ -58,8 +52,16 @@ ENV PAYLOAD_TIMEOUT 120000
 ENV TIMEOUT_SERVER 120000
 ENV TIMEOUT_SOCKET 140000
 
-USER coog
+
 COPY . /unoconvservice
+RUN set -eux \
+    && adduser --uid 1003 coog --disabled-login \
+    && adduser coog node \
+    && adduser node coog \
+    && chown coog:coog /unoconvservice -R \
+    && chmod -R 771 /unoconvservice -R
+
+USER coog
 # Expose 3000
 EXPOSE 5000
 
