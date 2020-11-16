@@ -29,7 +29,7 @@ module.exports.handleUpload = (request, reply) => {
         return reply(err)
       }
 
-      console.log(`Starting converting "${data.file.hapi.filename}" to ${convertToFormat}`)
+      console.log(`Starting converting "${data.file.hapi.filename}" to ${convertToFormat} temp is ${fileNameTempOriginal}`)
       unoconv.convert(fileNameTempOriginal, convertToFormat, {}, (err, result) => {
         if (err) {
           console.error(`Error converting "${data.file.hapi.filename}" to ${convertToFormat}:`, err)
@@ -84,3 +84,17 @@ module.exports.showVersions = (request, reply) => {
 module.exports.healthcheck = (request, reply) => {
   reply({ uptime: process.uptime() })
 }
+
+module.exports.liveness = (request, reply) => {
+  const file = process.cwd() + '/uploads/' + 'test_liveness.odt'
+  unoconv.convert(file, 'pdf', {}, (err, result) => {
+        if (err) {
+          console.error("Error converting liveness file to pdf:", err)
+          reply(err)
+        } else {
+          console.log("Finished converting liveness file to pdf")
+          reply('alive\n')
+        }
+    })
+}
+

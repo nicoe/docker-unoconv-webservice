@@ -49,5 +49,12 @@ module.exports = [
     config: {
       handler: handlers.healthcheck
     }
+  },
+  {
+    method: 'GET',
+    path: '/liveness',
+    config: {
+      handler: handlers.liveness
+    }
   }
 ]

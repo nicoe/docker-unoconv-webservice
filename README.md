@@ -62,6 +62,18 @@ returns
 }
 ```
 
+### Liveness
+
+Are we really alive? ```/liveness```
+
+returns
+
+```JavaScript
+
+"alive\n"
+
+```
+
 ## Environment
 
 You can change the webservice port and filesize-limit by changing environment variables.
