@@ -1,13 +1,17 @@
 # docker-unoconv-webservice
 
-Dockerimage to run unoconv as a webservice through [tfk-api-unoconv](https://github.com/zrrrzzt/tfk-api-unoconv).
 
-If you prefer a pre-build version it is available from [hub.docker.com](https://hub.docker.com/r/zrrrzzt/docker-unoconv-webservice)
-just do a regular pull
+Unoconv as a webservice.
 
-```bash
-$ docker pull zrrrzzt/docker-unoconv-webservice
-```
+This fork calls unoconv in way that allows parallel conversions, that is with random --port and --user-profile options.
+See https://github.com/unoconv/unoconv/issues/225.
+
+Credits:
+
+* https://github.com/atorma/tfk-api-unoconv
+
+We simply added a liveness probe that converts a test odt file to pdf
+
 
 ## Build
 
@@ -17,13 +21,7 @@ $ docker build -t docker-unoconv-webservice .
 
 ## Run - example
 ```bash
-$ docker run -d -p 80:3000 --name unoconv docker-unoconv-webservice
-```
-
-or if you use the pre-build version
-
-```bash
-$ docker run -d -p 80:3000 --name unoconv zrrrzzt/docker-unoconv-webservice
+$ docker run -d -p 80:5000 --name unoconv docker-unoconv-webservice
 ```
 
 ## Usage
@@ -78,7 +76,7 @@ returns
 
 You can change the webservice port and filesize-limit by changing environment variables.
 
-SERVER_PORT default is 3000
+SERVER_PORT default is 5000
 
 PAYLOAD_MAX_SIZE default is 1048576 (1 MB)
 
@@ -89,7 +87,7 @@ TIMEOUT_SOCKET default is 2 minutes and 20 seconds (140 000 milliseconds)
 Change it in the Dockerfile or create an env-file and load it at containerstart
 
 ```bash
-$ docker run --env-file=docker.env -d -p 80:3000 --name unoconv docker-unoconv-webservice
+$ docker run --env-file=docker.env -d -p 80:5000 --name unoconv docker-unoconv-webservice
 ```
 
 ## License
